@@ -4,21 +4,26 @@ import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import supportGUI.Circle;
 import supportGUI.Line;
-public class DefaultTeam {
 
-  // calculDiametre: ArrayList<Point> --> Line
-  // renvoie une paire de points de la liste, de distance maximum.
-  public Line calculDiametre(ArrayList<Point> points) {
-    ArrayList<Point> convexHull = tme1exercice8(points); // Utilise tme1exercice8 pour obtenir le polygone convexe
-    return tme1exercice6(convexHull); // Utilise tme1exercice
-  }
+
+public class DefaultTeam {
 
   // calculCercleMin: ArrayList<Point> --> Circle
   //   renvoie un cercle couvrant tout point de la liste, de rayon minimum.
   public Circle calculCercleMin(ArrayList<Point> points) {
     ArrayList<Point> convexHull = tme1exercice8(points); // Utilise tme1exercice8 pour obtenir le polygone convexe
     return tme1exercice4(convexHull);
+   //return welzl(convexHull); // Utilise l'algorithme de Welzl
   }
+
+  public Line calculDiametre(ArrayList<Point> points) {
+    ArrayList<Point> convexHull = tme1exercice8(points); // Utilise tme1exercice8 pour obtenir le polygone convexe
+    return tme1exercice6(convexHull); // Utilise tme1exercice
+    //return welzl(convexHull);
+  }
+
+
+
   private Circle tme1exercice4(ArrayList<Point> inputPoints){
     ArrayList<Point> points = (ArrayList<Point>) inputPoints.clone();
     if (points.size()<1) return null;
@@ -153,6 +158,68 @@ public class DefaultTeam {
 
     return convexHull;
   }
+
+
+    // Ajouter l'implémentation de l'algorithme de Welzl
+    private Circle welzl(ArrayList<Point> points) {
+      ArrayList<Point> pointsList = new ArrayList<>(points);
+      return welzlHelper(pointsList, new ArrayList<>());
+
+
+    }
+
+  private Circle welzlHelper(ArrayList<Point> points, ArrayList<Point> boundary) {
+    if (points.isEmpty() || boundary.size() == 3) {
+      // Si la liste de points est vide ou la taille de la frontière est 3, utiliser la méthode tme1exercice5
+      return tme1exercice5(boundary);
+    }
+
+    // Copier la liste de points pour éviter de modifier l'original
+    ArrayList<Point> pointsCopy = new ArrayList<>(points);
+
+    // Choisir un point aléatoire et le retirer de la liste
+    int randomIndex = (int) (Math.random() * pointsCopy.size());
+    Point randomPoint = pointsCopy.remove(randomIndex);
+
+    // Récursivement, obtenir le cercle couvrant minimum avec ce point exclu
+    Circle resultWithoutPoint = welzlHelper(pointsCopy, boundary);
+
+    // Si le point est dans le cercle couvrant minimum, pas besoin de l'ajouter à la frontière
+    if (!Boolean.parseBoolean(resultWithoutPoint.toString())) {
+      // Ajouter le point à la frontière et récursivement obtenir le cercle couvrant minimum
+      boundary.add(randomPoint);
+      return welzlHelper(pointsCopy, boundary);
+    } else {
+      return resultWithoutPoint;
+    }
+  }
+
+
+/*
+
+  // Copier la liste de points pour éviter de modifier l'original
+      ArrayList<Point> pointsCopy = new ArrayList<>(points);
+
+      // Choisir un point aléatoire et le retirer de la liste
+      int randomIndex = (int) (Math.random() * pointsCopy.size());
+      Point randomPoint = pointsCopy.remove(randomIndex);
+
+      // Récursivement, obtenir le cercle couvrant minimum avec ce point exclu
+      Circle resultWithoutPoint = welzlHelper(pointsCopy, boundary);
+
+      // Si le point est dans le cercle couvrant minimum, pas besoin de l'ajouter à la frontière
+        if (!Boolean.parseBoolean(resultWithoutPoint.toString())) {// Ajouter le point à la frontière et récursivement obtenir le cercle couvrant minimum
+            boundary.add(randomPoint);
+            return welzlHelper(pointsCopy, boundary);
+        } else {
+            return resultWithoutPoint;
+        }
+
+    }
+*/
+
+
+
   private Point[] getExtremums(ArrayList<Point> points) {
     if (points.size() < 4) return null; // Il faut au moins 4 points pour définir un quadrilatère
 
@@ -226,7 +293,26 @@ public class DefaultTeam {
         farthest = point;
       }
     }
-
     return farthest;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
