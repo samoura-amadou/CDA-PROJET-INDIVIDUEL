@@ -221,45 +221,6 @@ public class DefaultTeam {
     Collections.shuffle(PCopy);
     return welzlHelper(PCopy, new ArrayList<>(), PCopy.size());
 
-    /*ArrayList<Point> PCopy = new ArrayList<>(P);
-    Collections.shuffle(PCopy);
-
-    int numThreads = Runtime.getRuntime().availableProcessors();
-    ExecutorService executor = Executors.newFixedThreadPool(numThreads);
-    ArrayList<Future<Circle>> results = new ArrayList<>();
-
-    // Split the points into equal parts for each thread
-    int batchSize = PCopy.size() / numThreads;
-
-    for (int i = 0; i < numThreads; i++) {
-      int startIndex = i * batchSize;
-      int endIndex = (i == numThreads - 1) ? PCopy.size() : (i + 1) * batchSize;
-      List<Point> subList = PCopy.subList(startIndex, endIndex);
-
-      Future<Circle> future = executor.submit(() -> welzlHelper(new ArrayList<>(subList), new ArrayList<>(), subList.size()));
-      results.add(future);
-    }
-
-    // Collect the results from all threads
-    Circle result = null;
-    try {
-      for (Future<Circle> future : results) {
-        Circle circle = future.get();
-        if (result == null || circle.getRadius() < result.getRadius()) {
-          result = circle;
-        }
-      }
-    } catch (InterruptedException | ExecutionException e) {
-      e.printStackTrace();
-    } finally {
-      executor.shutdown();
-    }
-
-    return result;
-
-     */
-
-
   }
 
   private static Point[] getExtremums(ArrayList<Point> points) {
