@@ -1,6 +1,6 @@
 # CDA-PROJET INDIVIDUEL
 
-Voici quelques étapes générales pour démarrer un projet Java sous IntelliJ IDEA à partir de ce dépôt GitHub :
+Voici quelques étapes générales pour démarrer le projet Java sous IntelliJ IDEA à partir de ce dépôt GitHub :
 
 # Cloner le Répertoire GitHub :
 Ouvrez IntelliJ IDEA.
@@ -17,11 +17,13 @@ Choisissez "File" > "Open" et sélectionnez le répertoire du projet que vous ve
 
 
 # Configurer le Projet :
-Si le projet utilise Maven, IntelliJ IDEA détectera automatiquement la configuration. Sinon, vous devrez configurer le projet.
+Ce projet est utilisé en java, IntelliJ IDEA détectera automatiquement la configuration. Sinon, vous devrez configurer le projet.
 Allez dans "File" > "Project Structure".
-Assurez-vous que le JDK est correctement configuré sous "Project" > "Project SDK".
+Assurez-vous que le JDK est correctement configuré sous "Project" > "Project SDK" (Dans mon cas, c'est la version 11)
 Configurez le niveau de langage Java sous "Project" > "Project Language Level".
 Si vous utilisez Maven ou Gradle, configurez-les dans la section correspondante..
+
+N'hesitez pas d'uliser la version 11. 
 
 
 # Installer les Dépendances (si nécessaire) :
