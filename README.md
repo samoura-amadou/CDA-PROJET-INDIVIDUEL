@@ -21,7 +21,7 @@ Si le projet utilise Maven ou Gradle, IntelliJ IDEA détectera automatiquement l
 Allez dans "File" > "Project Structure".
 Assurez-vous que le JDK est correctement configuré sous "Project" > "Project SDK".
 Configurez le niveau de langage Java sous "Project" > "Project Language Level".
-Si vous utilisez Maven ou Gradle, configurez-les dans la section correspondante.
+Si vous utilisez Maven ou Gradle, configurez-les dans la section correspondante..
 
 
 # Installer les Dépendances (si nécessaire) :
