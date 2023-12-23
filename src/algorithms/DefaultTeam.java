@@ -33,7 +33,12 @@ public class DefaultTeam {
   public Circle calculCercleMin(ArrayList<Point> points) {
     //ArrayList<Point> convexHull = tme1exercice8(points); // Utilise tme1exercice8 pour obtenir le polygone convexe
     //assert convexHull != null;
-    return calculateMinEnclosingCircle(points);
+    //return calculateMinEnclosingCircle(points);
+
+    ArrayList<Point> convexHull = tme1exercice8(points); // Utilise tme1exercice8 pour obtenir le polygone convexe
+    assert convexHull != null;
+   return algoNaif(convexHull);
+
   }
 
   public static Circle calculCercleMin1(ArrayList<Point> points) {
