@@ -17,7 +17,7 @@ Choisissez "File" > "Open" et sélectionnez le répertoire du projet que vous ve
 
 
 # Configurer le Projet :
-Si le projet utilise Maven ou Gradle, IntelliJ IDEA détectera automatiquement la configuration. Sinon, vous devrez configurer le projet.
+Si le projet utilise Maven, IntelliJ IDEA détectera automatiquement la configuration. Sinon, vous devrez configurer le projet.
 Allez dans "File" > "Project Structure".
 Assurez-vous que le JDK est correctement configuré sous "Project" > "Project SDK".
 Configurez le niveau de langage Java sous "Project" > "Project Language Level".
